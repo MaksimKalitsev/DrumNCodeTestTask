@@ -11,8 +11,8 @@ class PhotosRepositoryImpl @Inject constructor(
     private val api: Api,
     private val photoDao: PhotoDao
 ) : IPhotosRepository {
-    override suspend fun getPhotosFromApi(page: Int, pageCount: Int): Result<Photos> = try {
-        val result = api.fetchPopularImages(page = page, perPage = pageCount).toPhotos()
+    override suspend fun getPhotosFromApi(page: Int, perPage: Int): Result<Photos> = try {
+        val result = api.fetchPopularImages(page = page, perPage = perPage).toPhotos()
         Result.success(result)
     } catch (ex: Exception) {
         ex.printStackTrace()

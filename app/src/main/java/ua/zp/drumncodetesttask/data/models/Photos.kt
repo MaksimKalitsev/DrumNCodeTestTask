@@ -46,3 +46,26 @@ data class Photo(
 //    get() = photo?.let {
 //        "$BASE_URL_IMAGES/w500/$photo"
 //    }
+
+//@Composable
+//fun FlickrImage(photo: Photo) {
+//    val painter = rememberImagePainter(
+//        data = "https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_m.jpg",
+//        builder = {
+//            crossfade(true)
+//            // інші налаштування
+//        }
+//    )
+//
+//    Image(
+//        painter = painter,
+//        contentDescription = photo.title, // для доступності
+//        modifier = Modifier.size(240.dp) // або інший розмір/модифікатор, який ви хочете застосувати
+//    )
+//}
+
+//@Composable
+//fun SomeContent() {
+//    // Припустимо, що у вас є об'єкт photo
+//    FlickrImage(photo = photo)
+//}
