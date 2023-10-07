@@ -25,3 +25,10 @@ data class Photo(
     val isfriend: Int,
     val isfamily: Int
 ) : Parcelable
+
+//https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
+
+//val preview: String?
+//    get() = photo?.let {
+//        "$BASE_URL_IMAGES/w500/$photo"
+//    }
