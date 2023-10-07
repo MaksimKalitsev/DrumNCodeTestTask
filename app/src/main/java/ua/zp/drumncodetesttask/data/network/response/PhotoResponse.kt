@@ -1,4 +1,4 @@
-package ua.zp.drumncodetesttask.data.network
+package ua.zp.drumncodetesttask.data.network.response
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
