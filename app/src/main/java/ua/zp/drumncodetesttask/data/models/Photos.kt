@@ -2,6 +2,7 @@ package ua.zp.drumncodetesttask.data.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import ua.zp.drumncodetesttask.data.db.PhotoEntity
 
 
 @Parcelize
@@ -24,7 +25,20 @@ data class Photo(
     val ispublic: Int,
     val isfriend: Int,
     val isfamily: Int
-) : Parcelable
+) : Parcelable{
+    fun toPhotoEntity(): PhotoEntity =
+        PhotoEntity(
+            id = id,
+            owner = owner,
+            secret = secret,
+            server = server,
+            farm = farm,
+            title = title,
+            isPublic = ispublic,
+            isFriend = isfriend,
+            isFamily = isfamily
+        )
+}
 
 //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
 
