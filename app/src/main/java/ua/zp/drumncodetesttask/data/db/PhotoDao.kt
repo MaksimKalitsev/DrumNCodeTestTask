@@ -11,7 +11,7 @@ interface PhotoDao {
     suspend fun getAllPhotos(): List<PhotoEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(photos: PhotoEntity)
+    suspend fun insertPhoto(photos: List<PhotoEntity>)
 
     @Query("DELETE FROM photos")
     suspend fun clearPhotosTable()

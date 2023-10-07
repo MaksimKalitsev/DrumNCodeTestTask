@@ -39,6 +39,8 @@ data class Photo(
             isFamily = isfamily
         )
 }
+fun List<Photo>.toPhotoEntityList(): List<PhotoEntity> =
+    this.map { it.toPhotoEntity() }
 
 //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
 
