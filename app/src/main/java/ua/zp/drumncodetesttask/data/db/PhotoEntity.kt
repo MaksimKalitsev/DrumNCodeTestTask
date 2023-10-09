@@ -1,12 +1,18 @@
 package ua.zp.drumncodetesttask.data.db
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import ua.zp.drumncodetesttask.data.models.Photo
 
-@Entity(tableName = "photos")
+@Entity(tableName = "photos",
+    indices = [
+        Index("idPosition", unique = true)
+    ])
 data class PhotoEntity(
-    @PrimaryKey val id: String,
+    @PrimaryKey (autoGenerate = true)
+    val idPosition: Int = 0,
+    val id: String,
     val owner: String,
     val secret: String,
     val server: String,

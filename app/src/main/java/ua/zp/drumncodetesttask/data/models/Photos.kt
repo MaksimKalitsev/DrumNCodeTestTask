@@ -36,7 +36,7 @@ data class Photo(
             title = title,
             isPublic = ispublic,
             isFriend = isfriend,
-            isFamily = isfamily
+            isFamily = isfamily,
         )
 }
 fun List<Photo>.toPhotoEntityList(): List<PhotoEntity> =
@@ -55,19 +55,18 @@ fun List<Photo>.toPhotoEntityList(): List<PhotoEntity> =
 //        data = "https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_m.jpg",
 //        builder = {
 //            crossfade(true)
-//            // інші налаштування
+//
 //        }
 //    )
 //
 //    Image(
 //        painter = painter,
-//        contentDescription = photo.title, // для доступності
-//        modifier = Modifier.size(240.dp) // або інший розмір/модифікатор, який ви хочете застосувати
+//        contentDescription = photo.title,
+//        modifier = Modifier.size(240.dp)
 //    )
 //}
 
 //@Composable
 //fun SomeContent() {
-//    // Припустимо, що у вас є об'єкт photo
 //    FlickrImage(photo = photo)
 //}

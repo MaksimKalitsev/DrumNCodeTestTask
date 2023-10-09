@@ -22,7 +22,7 @@ class PhotosRepositoryImpl @Inject constructor(
         Result.failure(ex)
     }
 
-    override suspend fun getPhotosFromDb(): Result<List<Photo>> = try {
+    override suspend fun getPhotosFromDb(photos: List<Photo>): Result<List<Photo>> = try {
         val result = photoDao.getAllPhotos()
         val mappedData = result.map { it.toPhoto() }
         Result.success(mappedData)
@@ -32,8 +32,8 @@ class PhotosRepositoryImpl @Inject constructor(
     }
 
     override suspend fun insertPhotosToDb(photos: List<Photo>) {
-        val newEntity = photos.toPhotoEntityList()
-        photoDao.insertPhoto(newEntity)
+        val newEntities = photos.toPhotoEntityList()
+        photoDao.insertPhoto(newEntities)
     }
 
     override suspend fun clearPhotoTable() {

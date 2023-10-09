@@ -1,5 +1,6 @@
 package ua.zp.drumncodetesttask.data.db
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -15,4 +16,7 @@ interface PhotoDao {
 
     @Query("DELETE FROM photos")
     suspend fun clearPhotosTable()
+
+    @Query("SELECT*FROM photos")
+    fun pagingSource(): PagingSource<Int, PhotoEntity>
 }
