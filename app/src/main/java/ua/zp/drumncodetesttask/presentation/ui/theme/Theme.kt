@@ -1,4 +1,4 @@
-package ua.zp.drumncodetesttask.ui.theme
+package ua.zp.drumncodetesttask.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

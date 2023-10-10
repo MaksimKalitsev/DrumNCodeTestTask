@@ -8,18 +8,23 @@ plugins {
 
 android {
     namespace = "ua.zp.drumncodetesttask"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ua.zp.drumncodetesttask"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
         }
     }
 
@@ -74,7 +79,7 @@ dependencies {
     implementation ("io.coil-kt:coil-compose:2.2.2")
 
     implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
-    implementation ("androidx.paging:paging-compose:3.3.0-alpha02")
+    implementation ("androidx.paging:paging-compose:3.2.1")
 
     implementation ("androidx.room:room-ktx:2.5.2")
     kapt ("androidx.room:room-compiler:2.5.2")

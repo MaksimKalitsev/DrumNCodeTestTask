@@ -42,31 +42,3 @@ data class Photo(
 fun List<Photo>.toPhotoEntityList(): List<PhotoEntity> =
     this.map { it.toPhotoEntity() }
 
-//https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
-
-//val preview: String?
-//    get() = photo?.let {
-//        "$BASE_URL_IMAGES/w500/$photo"
-//    }
-
-//@Composable
-//fun FlickrImage(photo: Photo) {
-//    val painter = rememberImagePainter(
-//        data = "https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_m.jpg",
-//        builder = {
-//            crossfade(true)
-//
-//        }
-//    )
-//
-//    Image(
-//        painter = painter,
-//        contentDescription = photo.title,
-//        modifier = Modifier.size(240.dp)
-//    )
-//}
-
-//@Composable
-//fun SomeContent() {
-//    FlickrImage(photo = photo)
-//}

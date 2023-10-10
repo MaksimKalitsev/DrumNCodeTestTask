@@ -31,7 +31,9 @@ class PhotoRemoteMediator @Inject constructor(
                     if (lastItem == null) {
                         1
                     } else {
-                        (lastItem.idPosition / state.config.pageSize) + 1
+                        val pageNumber = (lastItem.idPosition / state.config.pageSize) + 1
+                        println("@@# pageNumber: $pageNumber, idPosition: ${lastItem.idPosition}")
+                        pageNumber
                     }
                 }
             }
@@ -54,6 +56,5 @@ class PhotoRemoteMediator @Inject constructor(
         } catch (e: HttpException) {
             MediatorResult.Error(e)
         }
-
     }
 }

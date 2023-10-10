@@ -14,7 +14,7 @@ class PhotosRepositoryImpl @Inject constructor(
     override suspend fun getPhotosFromApi(page: Int, perPage: Int): Result<List<Photo>> = try {
         val response = api.fetchPopularImages(page = page, perPage = perPage)
         val result = response.toPhotos().photo
-        clearPhotoTable()
+//        clearPhotoTable()
         insertPhotosToDb(result)
         Result.success(result)
     } catch (ex: Exception) {
