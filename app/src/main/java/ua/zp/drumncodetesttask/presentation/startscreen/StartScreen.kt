@@ -68,9 +68,9 @@ fun StartScreen(navController: NavController, viewModel: PhotosListViewModel) {
                 horizontalArrangement = Arrangement.Start,
                 columns = GridCells.Fixed(3)
             ) {
-                items(photos.itemCount) { photo ->
-                    photos[photo]?.let {
-                        PhotoItem(photo = it, navController = navController)
+                items(photos.itemCount) { photoIndex ->
+                    photos[photoIndex]?.let {
+                        PhotoItem(photo = it, navController = navController, photoIndex = photoIndex)
                     }
                 }
                 item {
@@ -84,13 +84,14 @@ fun StartScreen(navController: NavController, viewModel: PhotosListViewModel) {
 }
 
 @Composable
-fun PhotoItem(photo: Photo, navController: NavController) {
+fun PhotoItem(photo: Photo, navController: NavController, photoIndex: Int) {
     Card(
         modifier = Modifier
             .padding(5.dp, 4.dp, 5.dp, 4.dp)
             .clickable(indication = rememberRipple(bounded = true),
                 interactionSource = remember { MutableInteractionSource() }) {
-                navController.navigate(Screen.DetailsScreen.route)
+                navController.navigate(Screen.DetailsScreen.route.replace("{photoIndex}", "$photoIndex"))
+
             },
         shape = RoundedCornerShape(CornerSize(5.dp)),
     ) {

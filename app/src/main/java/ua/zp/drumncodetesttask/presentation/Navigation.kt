@@ -20,14 +20,15 @@ fun Navigation() {
         composable(Screen.StartScreen.route) {
             StartScreen(navController = navController, viewModel)
         }
-        composable(Screen.DetailsScreen.route) {
-            DetailsScreen(photos = photos, initialPhotoPosition = 0)
+        composable(Screen.DetailsScreen.route) {backStackEntry ->
+            val photoIndexString = backStackEntry.arguments?.getString("photoIndex")
+            val photoIndex = photoIndexString?.toInt() ?: 0
+            DetailsScreen(photos = photos,photoIndex = photoIndex)
         }
     }
 }
 
 sealed class Screen(val route: String) {
     object StartScreen : Screen("start_screen")
-    object DetailsScreen :
-        Screen("details_screen")
+    object DetailsScreen : Screen("details_screen/{photoIndex}")
 }
