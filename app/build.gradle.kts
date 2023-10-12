@@ -85,6 +85,7 @@ dependencies {
     kapt ("androidx.room:room-compiler:2.5.2")
     implementation ("androidx.room:room-paging:2.5.2")
 
+    implementation("androidx.viewpager2:viewpager2:1.1.0-beta02")
     implementation ("androidx.compose.material:material:1.5.3")
     implementation ("com.google.accompanist:accompanist-pager:0.27.1")
 

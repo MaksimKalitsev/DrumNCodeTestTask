@@ -28,13 +28,8 @@ class PhotoRemoteMediator @Inject constructor(
 
                 LoadType.APPEND -> {
                     val lastItem = state.lastItemOrNull()
-                    if (lastItem == null) {
-                        1
-                    } else {
-                        val pageNumber = (lastItem.idPosition / state.config.pageSize) + 1
-                        println("@@# pageNumber: $pageNumber, idPosition: ${lastItem.idPosition}")
-                        pageNumber
-                    }
+                    if (lastItem == null) 1
+                    else (lastItem.idPosition / state.config.pageSize) + 1
                 }
             }
             val photosResult = photosRepository.getPhotosFromApi(
@@ -44,16 +39,15 @@ class PhotoRemoteMediator @Inject constructor(
             photosResult.getOrNull()?.let { photos ->
                 val dbResults = photosRepository.getPhotosFromDb(photos)
                 dbResults.getOrNull()?.let {
-                    return MediatorResult.Success(
+                    MediatorResult.Success(
                         endOfPaginationReached = photos.isEmpty()
                     )
                 }
-            } ?: return MediatorResult.Error(
+            } ?: MediatorResult.Error(
                 photosResult.exceptionOrNull() ?: Exception("Unknown exception")
             )
-        } catch (e: IOException) {
-            MediatorResult.Error(e)
-        } catch (e: HttpException) {
+        } catch (e: Exception) {
+            e.printStackTrace()
             MediatorResult.Error(e)
         }
     }

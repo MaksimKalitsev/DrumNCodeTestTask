@@ -20,15 +20,15 @@ class PagerModule {
     @OptIn(ExperimentalPagingApi::class)
     @Provides
     @Singleton
-    fun providePhotoPager(db: AppDatabase, remoteMediator: PhotoRemoteMediator): Pager<Int, PhotoEntity>{
-        return Pager(
+    fun providePhotoPager(db: AppDatabase, remoteMediator: PhotoRemoteMediator): Pager<Int, PhotoEntity> =
+        Pager(
             config = PagingConfig(pageSize = 20),
             remoteMediator = remoteMediator,
             pagingSourceFactory = {
                 db.photoDao().pagingSource()
             }
         )
-    }
+
 
     @Provides
     @Singleton

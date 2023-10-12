@@ -14,7 +14,6 @@ class PhotosRepositoryImpl @Inject constructor(
     override suspend fun getPhotosFromApi(page: Int, perPage: Int): Result<List<Photo>> = try {
         val response = api.fetchPopularImages(page = page, perPage = perPage)
         val result = response.toPhotos().photo
-//        clearPhotoTable()
         insertPhotosToDb(result)
         Result.success(result)
     } catch (ex: Exception) {
@@ -31,12 +30,12 @@ class PhotosRepositoryImpl @Inject constructor(
         Result.failure(ex)
     }
 
-    override suspend fun insertPhotosToDb(photos: List<Photo>) {
+    private suspend fun insertPhotosToDb(photos: List<Photo>) {
         val newEntities = photos.toPhotoEntityList()
         photoDao.insertPhoto(newEntities)
     }
 
-    override suspend fun clearPhotoTable() {
+    private suspend fun clearPhotoTable() {
         photoDao.clearPhotosTable()
     }
 }
